@@ -1,5 +1,7 @@
 <h1>MTG Twitter Bot</h1>
 
+https://twitter.com/TheDailyMTG
+
 <h2>What It Does:</h2> - Creates a Twitter bot that pulls a random card image from Scryfall's API and posts it.
 
 <h2>Purpose:</h2> - The purpose of this project was to develop a better understanding of APIs as well as Google Cloud.
