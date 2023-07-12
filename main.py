@@ -9,7 +9,8 @@ import shutil
 # Randomness, plain and simple.
 import random
 
-# lines: 13 - 21, Creating variables and assigning Keys, Tokens, and Secrets to them for passing. V2 and V1 options included. It's worth noting that these are formatted for Google Cloud. If testing locally, simply pass your credentials to the r espective variable.
+# lines: 13 - 21, Creating variables and assigning Keys, Tokens, and Secrets to them for passing. V2 and V1 options included. 
+# It's worth noting that these are formatted for Google Cloud. If testing locally, simply pass your credentials to the r espective variable.
 api_key = os.environ.get('Api_key')
 api_secret = os.environ.get('Api_secret')
 bearer_token = os.environ.get('Bearer_token')
@@ -22,13 +23,15 @@ client = tweepy.Client(bearer_token, api_key, api_secret, access_token,access_to
 
 # Defining the function "tweetToSend". Arguments are needed for Scheduling via Google Cloud.
 def tweetToSend(event, context):
-    # Creating a variable called "cardIds", and having it pull a random integer          between the specified range of 0 - 4980.
+    # Creating a variable called "cardIds", and having it pull a random integer between the specified range of 0 - 4980.
     cardIds = random.randint(0, 4980)
-    # Creating variable "response", that pulls a random card through API using a r       andomised multiverse ID. This multiverse ID it tacked on to a specific URL           endpoint, and generated through the "cardIDs" variable.
+    # Creating variable "response", that pulls a random card through API using a randomised multiverse ID. This multiverse ID it tacked on to a specific URL endpoint, and generated through the "cardIDs" variable.
     response = requests.get('https://api.scryfall.com/cards/multiverse/' + str(cardIds))
     # Creating variable "m". This variable takes our "response", and returns it as        Json encoded content.
     m = response.json()
-    # Creating variable "url". This variable takes "m", and grabs the a specific         key: value from the endpoint. In this specific instance we've generated a            specific card through "response", and through "url" have grabbed the respective      card's image url key (image_uris) and then a specified image URL value (normal).     This value has the card image, which we'll be posting.
+    # Creating variable "url". This variable takes "m", and grabs the a specific key: value from the endpoint. 
+    # In this specific instance we've generated a specific card through "response", and through "url" have grabbed the respective card's image url key (image_uris) and then a specified image URL value (normal). 
+    # This value has the card image, which we'll be posting.
     url = (m["image_uris"]["normal"])
   
     # Creating variable "res", and assigning "url" to it.
